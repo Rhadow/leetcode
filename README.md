@@ -1,2 +1,3 @@
-# leetcode
-My leetcode solutions
+# Leetcode Solutions
+
+Solutions to Leetcode questions in JavaScript.
