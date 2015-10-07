@@ -1,10 +1,10 @@
 let mergeSort = function(arr) {
-    if (arr.length === 0 || arr.length === 1) {
+    if (arr.length < 2) {
         return arr;
     }
 
-    let sortedSubArr1 = mergeSort(arr.slice(0, arr.length / 2));
-    let sortedSubArr2 = mergeSort(arr.slice(arr.length / 2));
+    let sortedSubArr1 = mergeSort(arr.slice(0, Math.floor(arr.length / 2)));
+    let sortedSubArr2 = mergeSort(arr.slice(Math.floor(arr.length / 2)));
     let subArr1Index = 0;
     let subArr2Index = 0;
 
