@@ -18,14 +18,10 @@ var connect = function(root) {
         root.next = root.next ? root.next : null;
         return;
     }
-    if (!root.next) {
-        root.next = null;
-    }
     root.left.next = root.right;
     root.right.next = null;
-    if (root.next) {
-        root.right.next = root.next.left;
-    }
+    root.next = root.next ? root.next : null;
+    root.right.next = root.next ? root.next.left : null;
     connect(root.left);
     connect(root.right);
 };
