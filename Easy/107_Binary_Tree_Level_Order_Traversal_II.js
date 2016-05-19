@@ -34,3 +34,31 @@ var levelOrderBottom = function(root) {
 
     return result.reverse().concat([[root.val]]);
 };
+
+
+// Second Solution
+
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[][]}
+ */
+var levelOrderBottom = function(root) {
+    var result = [], temp = [root];
+
+    while (root && temp.length > 0) {
+        result.unshift(temp.map(function(node) { return node.val; }));
+        temp = temp.reduce(function(acc, nextNode) {
+            return acc.concat(nextNode.left ? [nextNode.left] : []).concat(nextNode.right ? [nextNode.right] : []);
+        }, []);
+    }
+
+    return result;
+}; 
