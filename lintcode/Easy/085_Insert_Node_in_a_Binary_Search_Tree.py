@@ -14,7 +14,7 @@ class Solution:
     def insertNode(self, root, node):
         # write your code here
 
-        # Iterative
+        # Iteration
         if (root is None):
             return node
         parent = None
@@ -36,7 +36,7 @@ class Solution:
                 break
         return root;
 
-        # Recursive
+        # Recursion
         # if (root is None):
         #     return node
         # if (root.val > node.val):
