@@ -34,21 +34,17 @@ class Solution:
         curRow = 0
         curCol = 0
         savedCol = []
-        leftQ = n
         newMap = generateMap(n)
 
         while (True):
             if (isQueenValid(newMap, curRow, curCol)):
                 newMap[curRow] = curCol
-                leftQ -= 1
                 savedCol.append(curCol)
                 curRow += 1
                 curCol = 0
                 if (curRow >= n):
-                    if (leftQ == 0):
-                        result.append(toStr(newMap))
+                    result.append(toStr(newMap))
                     curRow -= 1
-                    leftQ += 1
                     curCol = savedCol.pop() + 1
                     newMap = newMap[:curRow] + generateMap(n - curRow)
             else:
@@ -57,7 +53,6 @@ class Solution:
                     if curRow == 0:
                         break
                     curRow -= 1
-                    leftQ += 1
                     curCol = savedCol.pop() + 1
                     newMap = newMap[:curRow] + generateMap(n - curRow)
         return result
