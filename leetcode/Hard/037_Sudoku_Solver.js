@@ -31,131 +31,21 @@ function insertSolution(board, num, row, col) {
 }
 
 function validateCurrentSolution(board, num, row, col) {
-    let result = true;
     num = `${num}`;
     if (board[row].includes(num)) {
-        result = false;
+        return false;
     }
     for (let i = 0; i < board.length; i++) {
         if (board[i][col] === num) {
-            result = false;
+            return false;
         }
     }
-
-    if (row % 3 === 2) {
-        if (col % 3 === 2) {
-            if (board[row][col - 1] === num ||
-            board[row][col - 2] === num ||
-            board[row - 1][col] === num ||
-            board[row - 1][col - 1] === num ||
-            board[row - 1][col - 2] === num ||
-            board[row - 2][col] === num ||
-            board[row - 2][col - 1] === num ||
-            board[row - 2][col - 2] === num
-            ) {
-                result = false;
-            }
-        } else if (col % 3 === 1) {
-            if (board[row][col + 1] === num ||
-            board[row][col - 1] === num ||
-            board[row - 1][col] === num ||
-            board[row - 1][col + 1] === num ||
-            board[row - 1][col - 1] === num ||
-            board[row - 2][col] === num ||
-            board[row - 2][col + 1] === num ||
-            board[row - 2][col - 1] === num
-            ) {
-                result = false;
-            }
-        } else {
-            if (board[row][col + 1] === num ||
-            board[row][col + 2] === num ||
-            board[row - 1][col] === num ||
-            board[row - 1][col + 1] === num ||
-            board[row - 1][col + 2] === num ||
-            board[row - 2][col] === num ||
-            board[row - 2][col + 1] === num ||
-            board[row - 2][col + 2] === num
-            ) {
-                result = false;
-            }
-        }
-    } else if (row % 3 === 1) {
-        if (col % 3 === 2) {
-            if (board[row][col - 1] === num ||
-            board[row][col - 2] === num ||
-            board[row + 1][col] === num ||
-            board[row + 1][col - 1] === num ||
-            board[row + 1][col - 2] === num ||
-            board[row - 1][col] === num ||
-            board[row - 1][col - 1] === num ||
-            board[row - 1][col - 2] === num
-            ) {
-                result = false;
-            }
-        } else if (col % 3 === 1) {
-            if (board[row][col + 1] === num ||
-            board[row][col - 1] === num ||
-            board[row + 1][col] === num ||
-            board[row + 1][col + 1] === num ||
-            board[row + 1][col - 1] === num ||
-            board[row - 1][col] === num ||
-            board[row - 1][col + 1] === num ||
-            board[row - 1][col - 1] === num
-            ) {
-                result = false;
-            }
-        } else {
-            if (board[row][col + 1] === num ||
-            board[row][col + 2] === num ||
-            board[row + 1][col] === num ||
-            board[row + 1][col + 1] === num ||
-            board[row + 1][col + 2] === num ||
-            board[row - 1][col] === num ||
-            board[row - 1][col + 1] === num ||
-            board[row - 1][col + 2] === num
-            ) {
-                result = false;
-            }
-        }
-    } else {
-        if (col % 3 === 2) {
-            if (board[row][col - 1] === num ||
-            board[row][col - 2] === num ||
-            board[row + 1][col] === num ||
-            board[row + 1][col - 1] === num ||
-            board[row + 1][col - 2] === num ||
-            board[row + 2][col] === num ||
-            board[row + 2][col - 1] === num ||
-            board[row + 2][col - 2] === num
-            ) {
-                result = false;
-            }
-        } else if (col % 3 === 1) {
-            if (board[row][col + 1] === num ||
-            board[row][col - 1] === num ||
-            board[row + 1][col] === num ||
-            board[row + 1][col + 1] === num ||
-            board[row + 1][col - 1] === num ||
-            board[row + 2][col] === num ||
-            board[row + 2][col + 1] === num ||
-            board[row + 2][col - 1] === num
-            ) {
-                result = false;
-            }
-        } else {
-            if (board[row][col + 1] === num ||
-            board[row][col + 2] === num ||
-            board[row + 1][col] === num ||
-            board[row + 1][col + 1] === num ||
-            board[row + 1][col + 2] === num ||
-            board[row + 2][col] === num ||
-            board[row + 2][col + 1] === num ||
-            board[row + 2][col + 2] === num
-            ) {
-                result = false;
+    for (let i = Math.floor(row / 3) * 3; i < Math.floor(row / 3) * 3 + 3; i++) {
+        for (let j = Math.floor(col / 3) * 3; j < Math.floor(col / 3) * 3 + 3; j++) {
+            if (board[i][j] === num) {
+                return false;
             }
         }
     }
-    return result;
+    return true;
 }
