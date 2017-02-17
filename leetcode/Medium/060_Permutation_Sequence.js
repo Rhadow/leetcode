@@ -18,7 +18,7 @@ var getPermutation = function(n, k) {
         const sectionKIsIn = Math.ceil(k / seqInOneSection);
         result += nums[sectionKIsIn];
         nums.splice(sectionKIsIn, 1);
-        k = (k % seqInOneSection === 0) ? (k / sectionKIsIn) : k % seqInOneSection;
+        k = (k % seqInOneSection === 0) ? seqInOneSection : k % seqInOneSection;
         index -= 1;
     }
     return result + nums[1];
