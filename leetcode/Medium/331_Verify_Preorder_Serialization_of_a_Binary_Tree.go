@@ -42,7 +42,6 @@ func isValidSerialization(preorder string) bool {
     stack := []int{}
 
     for index, val := range nodes {
-        fmt.Println(stack)
         if val == "#" {
             reduceStack(&stack)
         } else {
